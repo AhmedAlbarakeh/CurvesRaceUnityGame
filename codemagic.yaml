@@ -26,7 +26,7 @@ workflows:
        APP_ID: 6449428829
     scripts:
       - name: Generate the Xcode project from Unity
-       script: | 
+        script: | 
         $UNITY_BIN -batchmode \
           -quit \
           -logFile \
