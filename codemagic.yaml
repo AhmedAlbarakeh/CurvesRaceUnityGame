@@ -14,11 +14,9 @@ workflows:
     integrations:
       app_store_connect: APIKEY
     environment:
-      ios_signing:
+     ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.ayhamco.CurvesRaceGame
-      groups:
-        - unity_credentials
+        bundle_identifier: io.codemagic.unitysample
       vars:
        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
       UNITY_IOS_DIR: ios
