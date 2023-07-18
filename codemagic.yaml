@@ -25,8 +25,13 @@ workflows:
        APP_ID: 6449428829
     scripts:
       - name: Generate the Xcode project from Unity
-        script: |
-          $UNITY_BIN $HOME
+        script: | 
+         $UNITY_BIN -batchmode \
+           -quit \
+           -logFile \
+           -projectPath . \
+           -executeMethod BuildScript.BuildIos \
+           -nographics
       - name: Set up code signing settings on Xcode project
         script: | 
          xcode-project use-profiles
