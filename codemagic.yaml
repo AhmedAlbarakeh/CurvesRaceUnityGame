@@ -26,7 +26,7 @@ workflows:
     scripts:
       - name: Generate the Xcode project from Unity
         script: |
-          $UNITY_BIN HOME
+          $UNITY_BIN $HOME
       - name: Set up code signing settings on Xcode project
         script: | 
          xcode-project use-profiles
