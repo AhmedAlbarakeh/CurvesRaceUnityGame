@@ -26,7 +26,7 @@ workflows:
     scripts:
       - name: Generate the Xcode project from Unity
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode \
+          $HOME/Contents/MacOS/Unity -batchmode \
            -quit \
            -logFile \
            -projectPath . \
