@@ -26,10 +26,7 @@ workflows:
     scripts:
       - name: Generate the Xcode project from Unity
         script: | 
-          $UNITY_HOME/ -batchmode \
-           -quit \
-           -logFile \
-           -projectPath . \
+          $UNITY_HOME/ . \
            -executeMethod BuildScript.BuildIos \
            -nographics
       - name: Set up code signing settings on Xcode project
