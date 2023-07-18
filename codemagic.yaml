@@ -29,7 +29,7 @@ workflows:
         script: |
           $UNITY_BIN -batchmode\quit\logFile\projectPath.\executeMethod BuildScript.BuildIos\nographics
       - name: Set up code signing settings on Xcode project
-      script: | 
+        script: | 
          xcode-project use-profiles
       - name: Set the build number
         script: | 
