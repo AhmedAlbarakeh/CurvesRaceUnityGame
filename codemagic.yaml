@@ -1,46 +1,50 @@
-workflows:
-  my-workflow:
-    publishing:
-      app_store_connect:
-        api_key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg/1Md0bswgqrvPKvB37GHjOp0MnyQQNYSY8ELx1gPMROgCgYIKoZIzj0DAQehRANCAAT30ujJwL81SzBI7qLMIWKHKuwPQeCMxR0JIblZfAZmZ4mKIBD01SQDoBKheP7ikxW7BEyI2fC4jtTWlcoJJUjv
-        key_id: GBA5Y8Y3LX
-        issuer_id: 9bb14943-c02d-46b4-99a9-f088f800e133
-        submit_to_testflight: true
-        beta_groups:
-          - Beta Testers
 # workflows:
 #   my-workflow:
-#     max_build_duration: 120
-#     integrations:
-#       app_store_connect: APIKEY
-#     environment:
-#       ios_signing:
-#         distribution_type: app_store
-#         bundle_identifier: com.ayhamco.CurvesRaceGame
-#       groups:
-#         - unity_credentials
-#       vars:
-#         UNITY_IOS_DIR: ios
-#         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
-#         XCODE_SCHEME: "Unity-iPhone"
-#         BUNDLE_ID: "com.ayhamco.CurvesRaceGame"
-#         APP_ID: 6449428829
-#     scripts:
-#       - name: Generate the Xcode project from Unity
-#         script: | 
-#           $UNITY_HOME
-#       - name: Set up code signing settings on Xcode project
-#         script: | 
-#           xcode-project use-profiles
-#       - name: Set the build number
-#         script: | 
-#           BUILD_NUMBER=14
-#       - name: Build the project
-#         script: | 
-#           xcode-project build-ipa \
-#             --project "$HOME/" \
-#             --scheme "$XCODE_SCHEME"
-#     artifacts:
-#       - build/ios/ipa/*.ipa
-#       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+#     publishing:
+#       app_store_connect:
+#         api_key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg/1Md0bswgqrvPKvB37GHjOp0MnyQQNYSY8ELx1gPMROgCgYIKoZIzj0DAQehRANCAAT30ujJwL81SzBI7qLMIWKHKuwPQeCMxR0JIblZfAZmZ4mKIBD01SQDoBKheP7ikxW7BEyI2fC4jtTWlcoJJUjv
+#         key_id: GBA5Y8Y3LX
+#         issuer_id: 9bb14943-c02d-46b4-99a9-f088f800e133
+#         submit_to_testflight: true
+#         beta_groups:
+#           - Beta Testers
+workflows:
+  my-workflow:
+    max_build_duration: 120
+    integrations:
+      app_store_connect: APIKEY
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.ayhamco.CurvesRaceGame
+      groups:
+        - unity_credentials
+      vars:
+       UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
+      UNITY_IOS_DIR: ios
+      XCODE_PROJECT: "Unity-iPhone.xcodeproj"
+      XCODE_SCHEME: "Unity-iPhone"
+        BUNDLE_ID: "com.ayhamco.CurvesRaceGame"
+        APP_ID: 6449428829
+    scripts:
+      - name: Generate the Xcode project from Unity
+       script: | 
+        $UNITY_BIN -batchmode \
+          -quit \
+          -logFile \
+          -projectPath . \
+          -executeMethod BuildScript.BuildIos \
+          -nographics
+      - name: Set up code signing settings on Xcode project
+      script: | 
+         xcode-project use-profiles
+      - name: Set the build number
+        script: | 
+          BUILD_NUMBER=14
+      - name: Build the project
+        script: | 
+         xcode-project build-ipa --project "$UNITY_IOS_DIR/$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
   
