@@ -18,7 +18,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: com.ayhamco.CurvesRaceGame
       vars:
-       UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
+       UNITY_BIN: $UNITY_HOME/Contents/MacOS
        UNITY_IOS_DIR: ios
        XCODE_PROJECT: "Unity-iPhone.xcodeproj"
        XCODE_SCHEME: "Unity-iPhone"
