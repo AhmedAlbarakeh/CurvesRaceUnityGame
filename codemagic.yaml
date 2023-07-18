@@ -14,16 +14,16 @@ workflows:
     integrations:
       app_store_connect: APIKEY
     environment:
-     ios_signing:
+      ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.unitysample
       vars:
        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
-      UNITY_IOS_DIR: ios
-      XCODE_PROJECT: "Unity-iPhone.xcodeproj"
-      XCODE_SCHEME: "Unity-iPhone"
-        BUNDLE_ID: "com.ayhamco.CurvesRaceGame"
-        APP_ID: 6449428829
+       UNITY_IOS_DIR: ios
+       XCODE_PROJECT: "Unity-iPhone.xcodeproj"
+       XCODE_SCHEME: "Unity-iPhone"
+       BUNDLE_ID: "com.ayhamco.CurvesRaceGame"
+       APP_ID: 6449428829
     scripts:
       - name: Generate the Xcode project from Unity
        script: | 
