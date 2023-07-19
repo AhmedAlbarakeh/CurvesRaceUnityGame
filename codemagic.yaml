@@ -14,6 +14,8 @@ workflows:
     integrations:
       app_store_connect: APIKEY
     environment:
+      groups:
+       - unity_credentials
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.ayhamco.CurvesRaceGame
